@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: webnotifications
 Bundle-Name: Web Notifications
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1
 Package-Type: Web-Service
 
 Name: toastr/toastr.spec
