@@ -6,5 +6,7 @@
     "description": "This is the package contains services for the display of notifications messages",
     "wikiUrl": "https://github.com/Servoy/webnotifications/wiki",
     "sourceUrl" : "https://github.com/Servoy/webnotifications",
-    "releases" : [{"version":"1.0.1","url":"https://github.com/Servoy/webnotifications/releases/download/v1.0.1/webnotifications.zip", "servoy-version":"8.1"}]
+    "releases" : [{"version":"1.0.0","url":"https://github.com/Servoy/webnotifications/releases/download/v1.0.0/webnotifications.zip", "servoy-version":"8.1"},
+    							{"version":"1.0.1","url":"https://github.com/Servoy/webnotifications/releases/download/v1.0.1/webnotifications.zip", "servoy-version":"8.1"},
+    							{"version":"1.0.2","url":"https://github.com/Servoy/webnotifications/releases/download/v1.0.2/webnotifications.zip", "servoy-version":"8.1"}]
 }
