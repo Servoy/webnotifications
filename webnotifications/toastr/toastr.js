@@ -2,11 +2,7 @@ angular.module('webnotificationsToastr', ['servoy']).factory("webnotificationsTo
 		var scope = $services.getServiceScope('webnotificationsToastr')
 
 		function show(type, message, title, options) {
-			if (title) {
-				toastr[type](title, message, options);
-			} else {
-				toastr[type](message, options);
-			}
+			toastr[type](message, title, options);
 		}
 
 		return {

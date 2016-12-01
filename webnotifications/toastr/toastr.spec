@@ -19,12 +19,10 @@
 			"mimetype": "text/javascript"
 		}
 	],
-
 	"model": 
 	{
 		
 	},
-
 	"api": 
 	{
 		"info": 
@@ -46,7 +44,6 @@
 				}              
 			]
 		},
-
 		"warning": 
 		{
 			"parameters": [
@@ -66,7 +63,6 @@
 				}               
 			]
 		},
-
 		"success": 
 		{
 			"parameters": [
@@ -86,7 +82,6 @@
 				}               
 			]
 		},
-
 		"error": 
 		{
 			"parameters": [
@@ -106,13 +101,10 @@
 				}               
 			]
 		},
-
 		"clear": 
 		{
-			
 		}
 	},
-
 	"types": 
 	{
 		"toastrOptions": 
@@ -129,7 +121,8 @@
 			"showEasing": "string",
 			"hideEasing": "string",
 			"showMethod": "string",
-			"hideMethod": "string"
+			"hideMethod": "string",
+			"progressBar": "boolean"
 		}
 	}
 }
