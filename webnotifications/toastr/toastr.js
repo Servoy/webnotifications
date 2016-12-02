@@ -47,6 +47,16 @@ angular.module('webnotificationsToastr', ['servoy']).factory("webnotificationsTo
 			 */
 			clear: function() {
 				toastr.clear();
+			},
+			/**
+			 * Sets the given options globally
+			 * @param {Object} options toastrOptions
+			 */
+			setGlobalOptions: function(options) {
+				scope.model.options = options;
+				for ( var i in options ) {
+					toastr.options[i] = options[i];
+				}
 			}
 
 		}

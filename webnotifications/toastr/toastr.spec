@@ -21,7 +21,7 @@
 	],
 	"model": 
 	{
-		
+		"globalOptions": { "type": "object", "tags": {"scope": "private"} }
 	},
 	"api": 
 	{
@@ -103,6 +103,14 @@
 		},
 		"clear": 
 		{
+		},
+		"setGlobalOptions": {
+			"parameters": [
+			{                                                                 
+					"name":"options",
+					"type":"toastrOptions"
+				}
+			]
 		}
 	},
 	"types": 
