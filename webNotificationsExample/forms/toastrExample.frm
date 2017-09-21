@@ -21,6 +21,7 @@ valuelistID:"C9D01361-4163-48AC-8549-CD88359AB7C5"
 },
 {
 location:"30,50",
+name:"toaster_info",
 onActionMethodID:"424604BD-E1D9-4530-BC39-09D669880588",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
@@ -60,6 +61,7 @@ uuid:"6860FCE6-2C65-4082-8D12-57902BA69ED1"
 },
 {
 location:"30,170",
+name:"toaster_error",
 onActionMethodID:"A2AD8BCA-9988-4473-824E-563A6586E3CA",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
@@ -80,6 +82,7 @@ uuid:"6D820524-DF71-4900-8251-1A39DB1DF204"
 },
 {
 location:"30,130",
+name:"toaster_warning",
 onActionMethodID:"F10B869D-7496-4E7F-9699-25C2BE52577D",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
@@ -191,6 +194,7 @@ uuid:"DCDAD4ED-D72E-4402-A428-BB16C964843B"
 },
 {
 location:"30,90",
+name:"toaster_success",
 onActionMethodID:"BDBB9097-9E97-43C1-8C35-3808DA6820C7",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
