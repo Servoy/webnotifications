@@ -6,7 +6,7 @@
  * @properties={typeid:24,uuid:"FE421CAF-01DE-41DE-B086-876F5E8A8A1A"}
  */
 function getName() {
-	return 'Web Notifications';
+	return 'ToastR Notifications';
 }
 
 /**

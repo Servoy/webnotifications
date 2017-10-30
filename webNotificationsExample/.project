@@ -4,6 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>resources</project>
+		<project>webnotifications</project>
+		<project>svyMicroSamples</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
