@@ -37,3 +37,16 @@ function getParent() {
 function getIconStyleClass() {
 	return 'fa fa-bell';
 }
+
+
+/**
+* @public 
+* @return {Array<String>} code lines
+* @SuppressWarnings(private) TODO suppress not working ?
+* @properties={typeid:24,uuid:"59C09A40-91B9-4E1C-8106-7A76B09F72EF"}
+*/
+function getSampleCode() {
+	return printMethodCode(forms.webNotificationsExample.getUserPermission)
+		.concat(printMethodCode(forms.webNotificationsExample.gerUserPermissionCallback))
+		.concat(printMethodCode(forms.webNotificationsExample.showNotification))
+}
