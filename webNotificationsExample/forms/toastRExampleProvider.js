@@ -38,3 +38,36 @@ function getParent() {
 function getIconStyleClass() {
 	return 'fa fa-flash';
 }
+
+
+/**
+*
+* @return {String} Website URL
+*
+* @properties={typeid:24,uuid:"7C29D98D-B9EC-4CBD-9F27-9920BE630400"}
+*/
+function getWebSiteURL() {
+	return 'https://github.com/Servoy/webnotifications';
+}
+
+/**
+*
+* @return {String} Additioanl info (wiki markdown supported)
+*
+* @properties={typeid:24,uuid:"01F03506-BCCF-4619-ADF5-B1E5C0F2B861"}
+*/
+function getMoreInfo() {
+	var url = 'https://raw.githubusercontent.com/Servoy/webnotifications/master/README.md';
+	return plugins.http.getPageData(url);
+}
+
+/**
+*
+* @return {String} Download URL
+*
+* @properties={typeid:24,uuid:"EA3BF118-5CAB-448B-845B-AD928BE0230C"}
+*/
+function getDownloadURL() {
+	return 'https://github.com/Servoy/webnotifications/releases/download/v1.1.0/webNotificationsExample.servoy';
+}
+

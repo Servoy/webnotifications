@@ -50,3 +50,35 @@ function getSampleCode() {
 		.concat(printMethodCode(forms.webNotificationsExample.gerUserPermissionCallback))
 		.concat(printMethodCode(forms.webNotificationsExample.showNotification))
 }
+
+
+/**
+*
+* @return {String} Website URL
+*
+* @properties={typeid:24,uuid:"9F9754BE-0C3D-4CF3-8822-D7B71899213C"}
+*/
+function getWebSiteURL() {
+	return 'https://github.com/Servoy/webnotifications';
+}
+
+/**
+*
+* @return {String} Additioanl info (wiki markdown supported)
+*
+* @properties={typeid:24,uuid:"7F3C06AF-AB98-49FB-95E7-B757407FB333"}
+*/
+function getMoreInfo() {
+	var url = 'https://raw.githubusercontent.com/Servoy/webnotifications/master/README.md';
+	return plugins.http.getPageData(url);
+}
+
+/**
+*
+* @return {String} Download URL
+*
+* @properties={typeid:24,uuid:"07FB7A0B-F833-4E3E-B57B-FC140CF724DE"}
+*/
+function getDownloadURL() {
+	return 'https://github.com/Servoy/webnotifications/releases/download/v1.1.0/webNotificationsExample.servoy';
+}
