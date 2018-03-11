@@ -5,19 +5,9 @@
  	"definition": "webnotifications/toastr/toastr.js",
 	"libraries": 
 	[
-		{
-			"name": "toastr.min.css",
-			"version": "1",
-			"url": "webnotifications/toastr/lib/toastr.min.css",
-			"mimetype": "text/css"
-		},
-
-		{
-			"name": "toastr.min.js",
-			"version": "1",
-			"url": "webnotifications/toastr/lib/toastr.min.js",
-			"mimetype": "text/javascript"
-		}
+		{ "name": "toastr.min.css", "version": "2.1.1", "url": "webnotifications/toastr/lib/toastr.min.css", "mimetype": "text/css" },
+		{ "name": "toastr.min.js", "version": "2.1.1", "url": "webnotifications/toastr/lib/toastr.min.js", "mimetype": "text/javascript"},
+		{ "name": "toastr.js.map", "version": "2.1.1", "url": "webnotifications/toastr/lib/toastr.js.map", "mimetype": "text/javascript"}
 	],
 	"model": 
 	{
