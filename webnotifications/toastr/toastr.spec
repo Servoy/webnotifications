@@ -119,7 +119,8 @@
 			"hideEasing": "string",
 			"showMethod": "string",
 			"hideMethod": "string",
-			"progressBar": "boolean"
+			"progressBar": "boolean",
+			"timeOut": "int"
 		}
 	}
 }

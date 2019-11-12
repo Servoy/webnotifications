@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: webnotifications
 Bundle-Name: Web Notifications
-Bundle-Version: 1.1.1
+Bundle-Version: 1.1.2
 Package-Type: Web-Service
 
 Name: webNotifications/webNotifications.spec
