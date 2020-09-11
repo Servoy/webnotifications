@@ -116,10 +116,8 @@ function error(event) {
  * @properties={typeid:24,uuid:"9FF4E5DF-A03D-42B1-876A-6851F9125908"}
  */
 function infoWithOptions(event) {
-	
 	// create options
-	/** @type {webnotificationsToastr.toastrOptions} */
-	var options = {};
+	var options = plugins.webnotificationsToastr.createToastrOptions();
 	options.closeButton = closeButton == 1;
 	options.hideDuration = hideDuration;
 	options.hideEasing = hideEasing;

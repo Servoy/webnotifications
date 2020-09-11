@@ -30,6 +30,11 @@
 					"name":"options",
 					"type":"toastrOptions",
 					"optional":true
+				},
+				{                                                                 
+					"name":"toastrId",
+					"type":"object",
+					"optional":true
 				}              
 			]
 		},
@@ -49,7 +54,12 @@
 					"name":"options",
 					"type":"toastrOptions",
 					"optional":true
-				}               
+				},
+				{                                                                 
+					"name":"toastrId",
+					"type":"object",
+					"optional":true
+				}             
 			]
 		},
 		"success": 
@@ -68,7 +78,12 @@
 					"name":"options",
 					"type":"toastrOptions",
 					"optional":true
-				}               
+				},
+				{                                                                 
+					"name":"toastrId",
+					"type":"object",
+					"optional":true
+				}                
 			]
 		},
 		"error": 
@@ -87,11 +102,29 @@
 					"name":"options",
 					"type":"toastrOptions",
 					"optional":true
+				},
+				{                                                                 
+					"name":"toastrId",
+					"type":"object",
+					"optional":true
 				}               
 			]
 		},
 		"clear": 
 		{
+		},
+		"clearToastr": 
+		{
+			"parameters": [
+			{                                                                 
+					"name":"toastrId",
+					"type":"object"
+				}
+			]
+		},
+		"createToastrOptions": 
+		{
+			"returns": "toastrOptions"
 		},
 		"setGlobalOptions": {
 			"parameters": [

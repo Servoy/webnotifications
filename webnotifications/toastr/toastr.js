@@ -1,8 +1,18 @@
 angular.module('webnotificationsToastr', ['servoy']).factory("webnotificationsToastr", function($services) {
 		var scope = $services.getServiceScope('webnotificationsToastr')
 
-		function show(type, message, title, options) {
-			toastr[type](message, title, options);
+		var toastrs = {};
+		var toastrsCreated = 1;
+		
+		function show(type, message, title, options, toastrId) {
+			options = options || {};
+			options.onHidden = function() {
+				delete toastrs[this.toastrId];
+			}
+			toastrId = toastrId || ('toastr_' + (toastrsCreated ++));
+			options.toastrId = toastrId;
+			var toastrElement = toastr[type](message, title, options);
+			toastrs[toastrId] = toastrElement
 		}
 
 		return {
@@ -11,42 +21,62 @@ angular.module('webnotificationsToastr', ['servoy']).factory("webnotificationsTo
 			 * @param {String} message the message to show
 			 * @param {String} title the optional title shown above the message
 			 * @param {Object} options toastrOptions object with additional options
+			 * @param {Object} toastrId optional id that can be used to clear this specific toastr via clearToastr
 			 */
-			info: function(message, title, options) {
-				show("info", message, title, options)
+			info: function(message, title, options, toastrId) {
+				show("info", message, title, options, toastrId)
 			},
 			/**
 			 * Shows a warning toastr with the given message, optional title and options
 			 * @param {String} message the message to show
 			 * @param {String} title the optional title shown above the message
 			 * @param {Object} options toastrOptions object with additional options
+			 * @param {Object} toastrId optional id that can be used to clear this specific toastr via clearToastr
 			 */
-			warning: function(message, title, options) {
-				show("warning", message, title, options)
+			warning: function(message, title, options, toastrId) {
+				show("warning", message, title, options, toastrId)
 			},
 			/**
 			 * Shows an error toastr with the given message, optional title and options
 			 * @param {String} message the message to show
 			 * @param {String} title the optional title shown above the message
 			 * @param {Object} options toastrOptions object with additional options
+			 * @param {Object} toastrId optional id that can be used to clear this specific toastr via clearToastr
 			 */
-			error: function(message, title, options) {
-				show("error", message, title, options)
+			error: function(message, title, options, toastrId) {
+				show("error", message, title, options, toastrId)
 			},
 			/**
 			 * Shows a success toastr with the given message, optional title and options
 			 * @param {String} message the message to show
 			 * @param {String} title the optional title shown above the message
 			 * @param {Object} options toastrOptions object with additional options
+			 * @param {Object} toastrId optional id that can be used to clear this specific toastr via clearToastr
 			 */
-			success: function(message, title, options) {
-				show("success", message, title, options)
+			success: function(message, title, options, toastrId) {
+				show("success", message, title, options, toastrId)
 			},
 			/**
 			 * Removes current toasts using animation
 			 */
 			clear: function() {
 				toastr.clear();
+			},
+			/**
+			 * Removes the toast with the given ID
+			 */
+			clearToastr: function(toastrId) {
+				if (toastrs[toastrId]) {
+					toastr.clear(toastrs[toastrId]);
+					delete toastrs[toastrId];
+				}
+			},
+			/**
+			 * Returns new, empty toastrOptions
+			 * @return {CustomType<webnotificationsToastr.toastrOptions>}
+			 */
+			createToastrOptions: function() {
+				return {};
 			},
 			/**
 			 * Sets the given options globally
