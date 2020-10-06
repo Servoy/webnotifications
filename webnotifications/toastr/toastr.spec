@@ -16,6 +16,7 @@
 	{
 		"info": 
 		{
+			"async-now": true,
 			"parameters": [
 				{                                                                 
 					"name":"message",
@@ -40,6 +41,7 @@
 		},
 		"warning": 
 		{
+			"async-now": true,
 			"parameters": [
 				{                                                                 
 					"name":"message",
@@ -64,6 +66,7 @@
 		},
 		"success": 
 		{
+			"async-now": true,
 			"parameters": [
 				{                                                                 
 					"name":"message",
@@ -88,6 +91,7 @@
 		},
 		"error": 
 		{
+			"async-now": true,
 			"parameters": [
 				{                                                                 
 					"name":"message",
