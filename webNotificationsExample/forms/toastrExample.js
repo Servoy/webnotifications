@@ -118,7 +118,7 @@ function error(event) {
 function infoWithOptions(event) {
 	// create options
 	var options = plugins.webnotificationsToastr.createToastrOptions();
-	options.closeButton = closeButton == 1;
+	options.closeButton = closeButton == 1 ? true : false;
 	options.hideDuration = hideDuration;
 	options.hideEasing = hideEasing;
 	options.hideMethod = hideMethod;
@@ -127,7 +127,7 @@ function infoWithOptions(event) {
 	options.showMethod = showMethod;
 	options.showDuration = showDuration;
 	
-	plugins.webnotificationsToastr.info('This is a message with more options','Everybody Lovees Options',options);
+	plugins.webnotificationsToastr.success('This is a message with more options', 'Everybody Lovees Options', options);
 }
 
 /**
