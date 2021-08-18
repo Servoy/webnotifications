@@ -3,6 +3,11 @@
 	"displayName": "Toastr notifications",
 	"version": 1,
  	"definition": "webnotifications/toastr/toastr.js",
+ 	"ng2Config": {
+       "packageName": "@servoy/webnotifications",
+       "serviceName": "ServoyToastrService",
+       "entryPoint": "projects/webnotifications"
+    },
 	"libraries": 
 	[
 		{ "name": "toastr.min.css", "version": "2.1.1", "url": "webnotifications/toastr/lib/toastr.min.css", "mimetype": "text/css" },

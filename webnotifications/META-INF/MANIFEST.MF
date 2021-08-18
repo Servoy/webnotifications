@@ -3,6 +3,9 @@ Bundle-SymbolicName: webnotifications
 Bundle-Name: Web Notifications
 Bundle-Version: 1.1.4
 Package-Type: Web-Service
+NPM-PackageName: @servoy/webnotifications
+NG2-Module: WebNotificationsModule
+Entry-Point: dist/servoy/webnotifications
 
 Name: webNotifications/webNotifications.spec
 Web-Service: True
