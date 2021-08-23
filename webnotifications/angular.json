@@ -18,9 +18,6 @@
               "tsConfig": "projects/webnotifications/tsconfig.lib.json",
               "project": "projects/webnotifications/ng-package.json"
             },
-            "styles": [
-                "node_modules/ngx-toastr/toastr.css"
-              ],
             "configurations": {
               "production": {
                 "tsConfig": "projects/webnotifications/tsconfig.lib.prod.json"

@@ -6,6 +6,7 @@
 	"ng2Config": { 
        "packageName": "@servoy/webnotifications",
        "serviceName": "WebNotificationsService",
+       "moduleName": "WebNotificationsModule",
        "entryPoint": "projects/webnotifications"
     },
 	"libraries": [],

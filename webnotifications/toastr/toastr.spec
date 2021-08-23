@@ -6,7 +6,11 @@
  	"ng2Config": {
        "packageName": "@servoy/webnotifications",
        "serviceName": "ServoyToastrService",
-       "entryPoint": "projects/webnotifications"
+       "moduleName": "WebNotificationsModule",
+       "entryPoint": "projects/webnotifications",
+       "dependencies": {
+            "csslibrary": ["~ngx-toastr/toastr.css"]
+       }
     },
 	"libraries": 
 	[
