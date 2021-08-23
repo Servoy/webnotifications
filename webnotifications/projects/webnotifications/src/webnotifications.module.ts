@@ -7,7 +7,7 @@ import { WindowRefService } from '@servoy/public';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServoyToastrService } from './toastr';
- 
+
 @NgModule({
     declarations: [],
     providers: [WindowRefService, WebNotificationsService, ServoyToastrService],

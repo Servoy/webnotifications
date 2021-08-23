@@ -22,13 +22,14 @@ interface ToastrOptions {
 @Injectable()
 export class ServoyToastrService {
 
-    toastrsCreated = 1; 
+    toastrsCreated = 1;
 	toastrsIDs: Array<[number, any]>;
-    
+
     constructor(private toastr: ToastrService) {}
 
 	/**
 	 * Shows an info toastr with the given message, optional title and options
+	 *
 	 * @param message the message to show
 	 * @param title the optional title shown above the message
 	 * @param options toastrOptions object with additional options
@@ -42,6 +43,7 @@ export class ServoyToastrService {
 
 	/**
 	 * Shows a warning toastr with the given message, optional title and options
+	 *
 	 * @param message the message to show
 	 * @param title the optional title shown above the message
 	 * @param options toastrOptions object with additional options
@@ -54,6 +56,7 @@ export class ServoyToastrService {
 
 	/**
 	 * Shows an error toastr with the given message, optional title and options
+	 *
 	 * @param message the message to show
 	 * @param title the optional title shown above the message
 	 * @param options toastrOptions object with additional options
@@ -66,6 +69,7 @@ export class ServoyToastrService {
 
 	/**
 	 * Shows a success toastr with the given message, optional title and options
+	 *
 	 * @param message the message to show
 	 * @param title the optional title shown above the message
 	 * @param options toastrOptions object with additional options
@@ -82,9 +86,7 @@ export class ServoyToastrService {
 	}
 
 	public clearToastr(toastrId: any) {
-		const toastrToClear = this.toastrsIDs.find(t => {
-			t[1] === toastrId;
-		})[0];
+		const toastrToClear = this.toastrsIDs.find(t => t[1] === toastrId)[0];
 		this.toastr.clear(toastrToClear);
 	}
 
@@ -96,7 +98,7 @@ export class ServoyToastrService {
 		this.toastr.toastrConfig.progressBar = options.progressBar;
 		this.toastr.toastrConfig.positionClass = options.positionClass;
 		this.toastr.toastrConfig.easeTime = options.showDuration;
-		
+
 		// this.toastr.toastrConfig. = options.hideDuration;
 		// this.toastr.toastrConfig = options.closeHtml;
 		// this.toastr.toastrConfig = options.hideEasing;
@@ -114,12 +116,8 @@ export class ServoyToastrService {
 		this.toastr.toasts.push(infoToast);
 
 		infoToast.onHidden.subscribe(() => {
-			this.toastr.toasts = this.toastr.toasts.filter(t => {
-				t.toastId !== infoToast.toastId;
-			});
-			this.toastrsIDs = this.toastrsIDs.filter(tID => {
-				tID[0] !== infoToast.toastId;
-			});
+			this.toastr.toasts = this.toastr.toasts.filter(t => t.toastId !== infoToast.toastId);
+			this.toastrsIDs = this.toastrsIDs.filter(tID => tID[0] !== infoToast.toastId);
 		});
 	}
 

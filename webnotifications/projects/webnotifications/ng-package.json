@@ -6,8 +6,9 @@
       "umdId": "servoy.webnotifications",
       "umdModuleIds": {
         "@servoy/public": "servoy.public",
-        "@angular/core": "angular.core"
+        "@angular/core": "angular.core",
+        "ngx-toastr": "ngx-toastr"
       }
     },
-    "allowedNonPeerDependencies": []
+    "allowedNonPeerDependencies": ["ngx-toastr"]
   }
