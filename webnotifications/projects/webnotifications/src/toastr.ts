@@ -23,7 +23,7 @@ interface ToastrOptions {
 export class ServoyToastrService {
 
     toastrsCreated = 1;
-	toastrsIDs: Array<[number, any]>;
+	toastrsIDs: Array<[number, any]> = [];
 
     constructor(private toastr: ToastrService) {}
 
