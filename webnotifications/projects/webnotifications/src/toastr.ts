@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActiveToast, ToastrService } from 'ngx-toastr';
+import { ActiveToast, IndividualConfig, ToastrService } from 'ngx-toastr';
 
 interface ToastrOptions {
 	showDuration: number;
@@ -36,8 +36,7 @@ export class ServoyToastrService {
 	 * @param toastrId optional id that can be used to clear this specific toastr via clearToastr
 	 */
 	public info(message: string, title: string, options: ToastrOptions, toastrId: any) {
-		const infoToast = this.toastr.info(message, title, options);
-
+		const infoToast = this.toastr.info(message, title, this.convertOptions(options));
 		this.commonActions(infoToast, toastrId);
 	}
 
@@ -50,7 +49,7 @@ export class ServoyToastrService {
 	 * @param toastrId optional id that can be used to clear this specific toastr via clearToastr
 	 */
 	public warning(message: string, title: string, options: ToastrOptions, toastrId: any) {
-		const infoToast = this.toastr.warning(message, title, options);
+		const infoToast = this.toastr.warning(message, title, this.convertOptions(options));
 		this.commonActions(infoToast, toastrId);
 	}
 
@@ -63,7 +62,7 @@ export class ServoyToastrService {
 	 * @param toastrId optional id that can be used to clear this specific toastr via clearToastr
 	 */
 	public error(message: string, title: string, options: ToastrOptions, toastrId: any) {
-		const infoToast = this.toastr.error(message, title, options);
+		const infoToast = this.toastr.error(message, title, this.convertOptions(options));
 		this.commonActions(infoToast, toastrId);
 	}
 
@@ -76,7 +75,7 @@ export class ServoyToastrService {
 	 * @param toastrId optional id that can be used to clear this specific toastr via clearToastr
 	 */
 	public success(message: string, title: string, options: ToastrOptions, toastrId: any) {
-		const infoToast = this.toastr.success(message, title, options);
+		const infoToast = this.toastr.success(message, title, this.convertOptions(options));
 		this.commonActions(infoToast, toastrId);
 	}
 
@@ -91,19 +90,22 @@ export class ServoyToastrService {
 	}
 
 	public setGlobalOptions(options: ToastrOptions) {
-		this.toastr.toastrConfig.closeButton = options.closeButton;
-		this.toastr.toastrConfig.easing = options.showEasing;
-		this.toastr.toastrConfig.timeOut = options.timeOut;
-		this.toastr.toastrConfig.newestOnTop = options.newestOnTop;
-		this.toastr.toastrConfig.progressBar = options.progressBar;
-		this.toastr.toastrConfig.positionClass = options.positionClass;
-		this.toastr.toastrConfig.easeTime = options.showDuration;
+		if (options) {
+			if (options.closeButton) this.toastr.toastrConfig.closeButton = options.closeButton;
+			if (options.showEasing) this.toastr.toastrConfig.easing = options.showEasing;
+			if (options.timeOut) this.toastr.toastrConfig.timeOut = options.timeOut;
+			if (options.newestOnTop) this.toastr.toastrConfig.newestOnTop = options.newestOnTop;
+			if (options.progressBar) this.toastr.toastrConfig.progressBar = options.progressBar;
+			if (options.positionClass) this.toastr.toastrConfig.positionClass = options.positionClass;
+			if (options.showDuration) this.toastr.toastrConfig.easeTime = options.showDuration;
+			
+			// this.toastr.toastrConfig. = options.hideDuration;
+			// this.toastr.toastrConfig = options.closeHtml;
+			// this.toastr.toastrConfig = options.hideEasing;
+			// this.toastr.toastrConfig = options.showMethod;
+			// this.toastr.toastrConfig = options.hideMethod;
+		}
 
-		// this.toastr.toastrConfig. = options.hideDuration;
-		// this.toastr.toastrConfig = options.closeHtml;
-		// this.toastr.toastrConfig = options.hideEasing;
-		// this.toastr.toastrConfig = options.showMethod;
-		// this.toastr.toastrConfig = options.hideMethod;
 	}
 
 	public createToastrOptions() {
@@ -121,4 +123,17 @@ export class ServoyToastrService {
 		});
 	}
 
+	private convertOptions(options: ToastrOptions) {
+		const config: Partial<IndividualConfig> = {};
+		if (options) {
+			if (options.closeButton) config.closeButton = options.closeButton;
+			if (options.showEasing) config.easing = options.showEasing;
+			if (options.timeOut) config.timeOut = options.timeOut;
+			if (options.newestOnTop) config.newestOnTop = options.newestOnTop;
+			if (options.progressBar) config.progressBar = options.progressBar;
+			if (options.positionClass) config.positionClass = options.positionClass;
+			if (options.showDuration) config.easeTime = options.showDuration;
+		}
+		return config as IndividualConfig;
+	}
 }
