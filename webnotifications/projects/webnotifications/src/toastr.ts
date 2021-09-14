@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActiveToast, IndividualConfig, ToastrService } from 'ngx-toastr';
+import { ActiveToast, IndividualConfig, ToastrService } from '@servoy/ngx-toastr'; 
 
 interface ToastrOptions {
 	showDuration: number;
@@ -99,9 +99,9 @@ export class ServoyToastrService {
 			if (options.positionClass) this.toastr.toastrConfig.positionClass = options.positionClass;
 			if (options.showDuration) this.toastr.toastrConfig.easeTime = options.showDuration;
 			
-			// this.toastr.toastrConfig. = options.hideDuration;
-			// this.toastr.toastrConfig = options.closeHtml;
-			// this.toastr.toastrConfig = options.hideEasing;
+			this.toastr.toastrConfig.hideEaseTime = options.hideDuration;
+			this.toastr.toastrConfig.closeHtml = options.closeHtml;
+			this.toastr.toastrConfig.hideEasing = options.hideEasing;
 			// this.toastr.toastrConfig = options.showMethod;
 			// this.toastr.toastrConfig = options.hideMethod;
 		}
