@@ -9,7 +9,7 @@
        "moduleName": "WebNotificationsModule",
        "entryPoint": "projects/webnotifications",
        "dependencies": {
-            "csslibrary": ["~ngx-toastr/toastr.css"]
+            "csslibrary": ["~@servoy/ngx-toastr/toastr.css"]
        }
     },
 	"libraries": 

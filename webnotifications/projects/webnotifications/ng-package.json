@@ -7,8 +7,8 @@
       "umdModuleIds": {
         "@servoy/public": "servoy.public",
         "@angular/core": "angular.core",
-        "ngx-toastr": "ngx-toastr"
+        "@servoy/ngx-toastr": "servoy.ngx-toastr"
       }
     },
-    "allowedNonPeerDependencies": ["ngx-toastr"]
+    "allowedNonPeerDependencies": ["@servoy/ngx-toastr"]
   }

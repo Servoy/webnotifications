@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ServoyPublicModule } from '@servoy/public';
 import { WebNotificationsService } from './webnotifications';
 import { WindowRefService } from '@servoy/public';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from '@servoy/ngx-toastr';
 import { ServoyToastrService } from './toastr';
 
 @NgModule({

@@ -8,7 +8,7 @@
       "@angular/forms": ">=12"
     },
     "dependencies": {
-      "ngx-toastr": ">=14",
+      "@servoy/ngx-toastr": ">=14",
       "tslib": "*"
     },
     "license": "MIT",
