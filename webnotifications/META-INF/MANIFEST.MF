@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: webnotifications
 Bundle-Name: Web Notifications
-Bundle-Version: 1.1.4
+Bundle-Version: 1.2.1
 Package-Type: Web-Service
 NPM-PackageName: @servoy/webnotifications
 Entry-Point: dist/servoy/webnotifications
