@@ -1,6 +1,6 @@
 {
     "name": "@servoy/webnotifications",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "peerDependencies": {
       "@angular/animations": ">=12",
       "@angular/common": ">=12",
