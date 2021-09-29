@@ -7,7 +7,7 @@
        "packageName": "@servoy/webnotifications",
        "serviceName": "ServoyToastrService",
        "moduleName": "WebNotificationsModule",
-       "entryPoint": "projects/webnotifications",
+       "entryPoint": "dist/servoy/webnotifications",
        "dependencies": {
             "csslibrary": ["~@servoy/ngx-toastr/toastr.css"]
        }

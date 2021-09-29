@@ -7,7 +7,7 @@
        "packageName": "@servoy/webnotifications",
        "serviceName": "WebNotificationsService",
        "moduleName": "WebNotificationsModule",
-       "entryPoint": "projects/webnotifications"
+       "entryPoint": "dist/servoy/webnotifications"
     },
 	"libraries": [],
 	"api": 
