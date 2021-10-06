@@ -159,8 +159,8 @@
 			"newestOnTop": "boolean",
 			"showEasing": "string",
 			"hideEasing": "string",
-			"showMethod": "string",
-			"hideMethod": "string",
+			"showMethod": { "type": "string", "deprecated": "old jquery option for ng1 implementation" },
+			"hideMethod": { "type": "string", "deprecated": "old jquery option for ng1 implementation" },
 			"progressBar": "boolean",
 			"timeOut": "int"
 		}
