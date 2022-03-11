@@ -17,6 +17,6 @@
     	{"version":"1.2.1","url":"https://github.com/Servoy/webnotifications/releases/download/v1.2.1/webnotifications.zip", "servoy-version":"2021.9"},
     	{"version":"1.2.2","url":"https://github.com/Servoy/webnotifications/releases/download/v1.2.2/webnotifications.zip", "servoy-version":"2021.9"},
         {"version":"1.2.3","url":"https://github.com/Servoy/webnotifications/releases/download/v1.2.3/webnotifications.zip", "servoy-version":"2021.12"},
-        {"version":"2022.03.0","url":"https://github.com/Servoy/webnotifications/releases/download/v2022.03.0/webnotifications.zip", "servoy-version":"2022.03"}
+        {"version":"2022.03.0","url":"https://github.com/Servoy/webnotifications/releases/download/v2022.03.0/webnotifications.zip", "servoy-version":"2022.3"}
     ]
 }
