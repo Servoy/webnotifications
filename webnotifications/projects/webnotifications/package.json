@@ -1,11 +1,11 @@
 {
     "name": "@servoy/webnotifications",
-    "version": "2022.3.1",
+    "version": "2022.9.0",
     "peerDependencies": {
-      "@angular/animations": "^13",
-      "@angular/common": "^13",
-      "@angular/core": "^13",
-      "@angular/forms": "^13"
+      "@angular/animations": "^14",
+      "@angular/common": "^14",
+      "@angular/core": "^14",
+      "@angular/forms": "^14"
     },
     "dependencies": {
       "@servoy/ngx-toastr": "<15",
