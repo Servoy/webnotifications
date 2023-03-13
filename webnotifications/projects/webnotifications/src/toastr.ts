@@ -124,7 +124,9 @@ export class ServoyToastrService {
 	}
 
 	private convertOptions(options: ToastrOptions) {
-		const config: Partial<IndividualConfig> = {};
+		const config: Partial<IndividualConfig> = {
+			enableHtml: true
+		};
 		if (options) {
 			if (options.closeButton) config.closeButton = options.closeButton;
 			if (options.showEasing) config.easing = options.showEasing;
