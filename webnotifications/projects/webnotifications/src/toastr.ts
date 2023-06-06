@@ -93,7 +93,7 @@ export class ServoyToastrService {
 		if (options) {
 			if (options.closeButton) this.toastr.toastrConfig.closeButton = options.closeButton;
 			if (options.showEasing) this.toastr.toastrConfig.easing = options.showEasing;
-			if (options.timeOut) this.toastr.toastrConfig.timeOut = options.timeOut;
+			if (options.timeOut >= 0) this.toastr.toastrConfig.timeOut = options.timeOut;
 			if (options.newestOnTop) this.toastr.toastrConfig.newestOnTop = options.newestOnTop;
 			if (options.progressBar) this.toastr.toastrConfig.progressBar = options.progressBar;
 			if (options.positionClass) this.toastr.toastrConfig.positionClass = options.positionClass;
@@ -130,7 +130,7 @@ export class ServoyToastrService {
 		if (options) {
 			if (options.closeButton) config.closeButton = options.closeButton;
 			if (options.showEasing) config.easing = options.showEasing;
-			if (options.timeOut) config.timeOut = options.timeOut;
+			if (options.timeOut >= 0) config.timeOut = options.timeOut;
 			if (options.newestOnTop) config.newestOnTop = options.newestOnTop;
 			if (options.progressBar) config.progressBar = options.progressBar;
 			if (options.positionClass) config.positionClass = options.positionClass;
