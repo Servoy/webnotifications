@@ -85,8 +85,10 @@ export class ServoyToastrService {
 	}
 
 	public clearToastr(toastrId: any) {
-		const toastrToClear = this.toastrsIDs.find(t => t[1] === toastrId)[0];
-		this.toastr.clear(toastrToClear);
+		const toastrToClear = this.toastrsIDs.find(t => t[1] === toastrId);
+		if (toastrToClear) {
+			this.toastr.clear(toastrToClear[0]);
+		}
 	}
 
 	public setGlobalOptions(options: ToastrOptions) {
