@@ -1,14 +1,14 @@
 {
     "name": "@servoy/webnotifications",
-    "version": "2023.6.1",
+    "version": "2023.9.0",
     "peerDependencies": {
-      "@angular/animations": "^15",
-      "@angular/common": "^15",
-      "@angular/core": "^15",
-      "@angular/forms": "^15"
+      "@angular/animations": "^16",
+      "@angular/common": "^16",
+      "@angular/core": "^16",
+      "@angular/forms": "^16"
     },
     "dependencies": {
-      "@servoy/ngx-toastr": "16.1.0-s1",
+      "@servoy/ngx-toastr": "17.0.2-s1",
       "tslib": "*"
     },
     "license": "MIT",
