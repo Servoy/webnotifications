@@ -3,6 +3,7 @@
 	"displayName": "Toastr notifications",
 	"version": 1,
  	"definition": "webnotifications/toastr/toastr.js",
+ 	"doc": "webnotifications/toastr/toastr_doc.js",
  	"ng2Config": {
        "packageName": "@servoy/webnotifications",
        "serviceName": "ServoyToastrService",

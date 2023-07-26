@@ -3,6 +3,7 @@
 	"displayName": "Native Web Notifications",
 	"version": 1,
  	"definition": "webnotifications/webNotifications/webNotifications.js",
+ 	"doc": "webnotifications/webNotifications/webNotifications_doc.js",
 	"ng2Config": { 
        "packageName": "@servoy/webnotifications",
        "serviceName": "WebNotificationsService",
