@@ -45,7 +45,12 @@
 					"name":"toastrId",
 					"type":"object",
 					"optional":true
-				}              
+				},
+				{                                                                 
+					"name":"onClick",
+					"type":"function",
+					"optional":true
+				}            
 			]
 		},
 		"warning": 
@@ -69,7 +74,12 @@
 					"name":"toastrId",
 					"type":"object",
 					"optional":true
-				}             
+				},
+				{                                                                 
+					"name":"onClick",
+					"type":"function",
+					"optional":true
+				}         
 			]
 		},
 		"success": 
@@ -92,6 +102,11 @@
 				{                                                                 
 					"name":"toastrId",
 					"type":"object",
+					"optional":true
+				},
+				{                                                                 
+					"name":"onClick",
+					"type":"function",
 					"optional":true
 				}                
 			]
@@ -116,6 +131,11 @@
 				{                                                                 
 					"name":"toastrId",
 					"type":"object",
+					"optional":true
+				},
+				{                                                                 
+					"name":"onClick",
+					"type":"function",
 					"optional":true
 				}               
 			]
@@ -152,9 +172,6 @@
 			"showDuration": "int",
 			"hideDuration": "int",
 			"positionClass": "string",
-			"onclick": "string",
-			"onShown": "string",
-			"onHidden": "string",
 			"closeButton": "boolean",
 			"closeHtml": "string",
 			"newestOnTop": "boolean",

@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
+import { ServoyPublicService } from '@servoy/public';
 import { ActiveToast, IndividualConfig, ToastrService } from '@servoy/ngx-toastr'; 
 
 interface ToastrOptions {
 	showDuration: number;
 	hideDuration: number;
 	positionClass: string;
-	onclick: string;
-	onShown: string;
-	onHidden: string;
 	closeButton: boolean;
 	closeHtml: string;
 	newestOnTop: boolean;
@@ -25,7 +23,7 @@ export class ServoyToastrService {
     toastrsCreated = 1;
 	toastrsIDs: Array<[number, any]> = [];
 
-    constructor(private toastr: ToastrService) {}
+    constructor(private toastr: ToastrService, private servoyService: ServoyPublicService) {}
 
 	/**
 	 * Shows an info toastr with the given message, optional title and options
@@ -34,10 +32,19 @@ export class ServoyToastrService {
 	 * @param title the optional title shown above the message
 	 * @param options toastrOptions object with additional options
 	 * @param toastrId optional id that can be used to clear this specific toastr via clearToastr
+	 * @param {Function} [onClick] onClick optional callback function when the toastr is clicked
+	 * 
+	 * @example <pre>
+	 * plugins.webnotificationsToastr.info('Hey, Servoy World is coming up in May!', 'Servoy World', null, 'sampleID', onClickDialog);
+	 * 
+	 * function onClick(toastrId) {
+	 * 	application.output('toastrId');
+	 * }
+	 * </pre>
 	 */
-	public info(message: string, title: string, options: ToastrOptions, toastrId: any) {
+	public info(message: string, title: string, options: ToastrOptions, toastrId: any, onClick: any) {
 		const infoToast = this.toastr.info(message, title, this.convertOptions(options));
-		this.commonActions(infoToast, toastrId);
+		this.commonActions(infoToast, toastrId, onClick);
 	}
 
 	/**
@@ -47,10 +54,19 @@ export class ServoyToastrService {
 	 * @param title the optional title shown above the message
 	 * @param options toastrOptions object with additional options
 	 * @param toastrId optional id that can be used to clear this specific toastr via clearToastr
+	 * @param {Function} [onClick] onClick optional callback function when the toastr is clicked
+	 * 
+	 * @example <pre>
+	 * plugins.webnotificationsToastr.warning('Hey, Servoy World is coming up in May!', 'Servoy World', null, 'sampleID', onClickDialog);
+	 * 
+	 * function onClick(toastrId) {
+	 * 	application.output('toastrId');
+	 * }
+	 * </pre>
 	 */
-	public warning(message: string, title: string, options: ToastrOptions, toastrId: any) {
+	public warning(message: string, title: string, options: ToastrOptions, toastrId: any, onClick: any) {
 		const infoToast = this.toastr.warning(message, title, this.convertOptions(options));
-		this.commonActions(infoToast, toastrId);
+		this.commonActions(infoToast, toastrId, onClick);
 	}
 
 	/**
@@ -60,10 +76,19 @@ export class ServoyToastrService {
 	 * @param title the optional title shown above the message
 	 * @param options toastrOptions object with additional options
 	 * @param toastrId optional id that can be used to clear this specific toastr via clearToastr
+	 * @param {Function} [onClick] onClick optional callback function when the toastr is clicked
+	 * 
+	 * @example <pre>
+	 * plugins.webnotificationsToastr.error('Oh no. Something went wrong. It will be OK', 'Error', null, 'sampleID', onClickDialog);
+	 * 
+	 * function onClick(toastrId) {
+	 * 	application.output('toastrId');
+	 * }
+	 * </pre>
 	 */
-	public error(message: string, title: string, options: ToastrOptions, toastrId: any) {
+	public error(message: string, title: string, options: ToastrOptions, toastrId: any, onClick: any) {
 		const infoToast = this.toastr.error(message, title, this.convertOptions(options));
-		this.commonActions(infoToast, toastrId);
+		this.commonActions(infoToast, toastrId, onClick);
 	}
 
 	/**
@@ -73,10 +98,19 @@ export class ServoyToastrService {
 	 * @param title the optional title shown above the message
 	 * @param options toastrOptions object with additional options
 	 * @param toastrId optional id that can be used to clear this specific toastr via clearToastr
+	 * @param {Function} [onClick] onClick optional callback function when the toastr is clicked
+	 * 
+	 * @example <pre>
+	 * plugins.webnotificationsToastr.success('Hey, Servoy World is coming up in May!', 'Servoy World', null, 'sampleID', onClickDialog);
+	 * 
+	 * function onClick(toastrId) {
+	 * 	application.output('toastrId');
+	 * }
+	 * </pre>
 	 */
-	public success(message: string, title: string, options: ToastrOptions, toastrId: any) {
+	public success(message: string, title: string, options: ToastrOptions, toastrId: any, onClick: Function) {
 		const infoToast = this.toastr.success(message, title, this.convertOptions(options));
-		this.commonActions(infoToast, toastrId);
+		this.commonActions(infoToast, toastrId, onClick);
 	}
 
 	public clear() {
@@ -114,7 +148,7 @@ export class ServoyToastrService {
 		return {};
 	}
 
-	private commonActions(infoToast: ActiveToast<any>, toastrId: any) {
+	private commonActions(infoToast: ActiveToast<any>, toastrId: any,onClick: any) {
 		toastrId = toastrId || ('toastr_' + (this.toastrsCreated++));
 		this.toastrsIDs.push([infoToast.toastId, toastrId]);
 		this.toastr.toasts.push(infoToast);
@@ -123,6 +157,13 @@ export class ServoyToastrService {
 			this.toastr.toasts = this.toastr.toasts.filter(t => t.toastId !== infoToast.toastId);
 			this.toastrsIDs = this.toastrsIDs.filter(tID => tID[0] !== infoToast.toastId);
 		});
+
+		if (onClick) {
+			
+			infoToast.onTap.subscribe(() => {
+				this.servoyService.executeInlineScript(onClick.formname, onClick.script, [toastrId]);
+			});
+		}
 	}
 
 	private convertOptions(options: ToastrOptions) {
