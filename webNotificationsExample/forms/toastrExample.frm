@@ -140,6 +140,14 @@ typeid:7,
 uuid:"A9CB7F71-9BFE-457F-91F7-2CFDDACF9B14"
 },
 {
+dataProviderID:"actionButtonText",
+location:"398,381",
+name:"hideDurationc",
+size:"170,28",
+typeid:4,
+uuid:"C11C4AC5-FC43-44BB-9339-E6079B30D9AC"
+},
+{
 labelFor:"showMethod",
 location:"210,310",
 name:"showMethod_label",
@@ -148,6 +156,16 @@ text:"SHow Method",
 transparent:true,
 typeid:7,
 uuid:"C4349F96-3313-4D99-9A37-8BDB1E1F19B8"
+},
+{
+labelFor:"hideDuration",
+location:"398,361",
+name:"hideDuration_labelc",
+size:"170,20",
+text:"Action Button Text",
+transparent:true,
+typeid:7,
+uuid:"CC90B6C5-A3AA-41AD-9B80-0C8E87BA86FA"
 },
 {
 labelFor:"hideMethod",
@@ -209,6 +227,17 @@ height:540,
 partType:5,
 typeid:19,
 uuid:"F09DFAEF-1372-4110-863A-87EE35E9AADD"
+},
+{
+dataProviderID:"actionButton",
+displayType:4,
+location:"395,420",
+name:"actionButton",
+size:"170,28",
+text:"Action Button",
+transparent:true,
+typeid:4,
+uuid:"F200083B-1361-481F-93E9-34E4183009E8"
 },
 {
 dataProviderID:"hideDuration",

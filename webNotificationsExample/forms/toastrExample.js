@@ -1,6 +1,13 @@
 /**
  * @type {Number}
  *
+ * @properties={typeid:35,uuid:"744654F7-5BF3-48F5-951C-04D1A4E4D719",variableType:4}
+ */
+var actionButton = 0;
+
+/**
+ * @type {Number}
+ *
  * @properties={typeid:35,uuid:"9F8B38D7-1303-484F-849C-31FD6408A4A4",variableType:4}
  */
 var closeButton = 0;
@@ -11,6 +18,13 @@ var closeButton = 0;
  * @properties={typeid:35,uuid:"2EC38C81-3CB4-4B32-A99A-481138E0769A",variableType:4}
  */
 var hideDuration = 300;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"D0160474-853A-45E4-9752-EFA5A288C6DE"}
+ */
+var actionButtonText = '<span class="btn btn-default pull-right">Undo <i class="fa-solid fa-rotate-left"></i></span>';
 
 /**
  * @type {String}
@@ -126,13 +140,64 @@ function infoWithOptions(event) {
 	options.showEasing = showEasing;
 	options.showMethod = showMethod;
 	options.showDuration = showDuration;
+	options.actionButton = actionButton;
+	options.actionButtonText = actionButtonText;
 	
-	plugins.webnotificationsToastr.success('This is a message with more options', 'Everybody Lovees Options', options);
+	plugins.webnotificationsToastr.success('This is a message with more options', 'Everybody Lovees Options', options, 1, onClick);
 }
 
 /**
  * @properties={typeid:24,uuid:"F3D823A2-8482-4551-9F36-13F18686FEEE"}
  */
-function onClick(){
-	application.output('Foo');
+function onClick(id, actionTarget){
+	application.output('Foo ' + id + ' - ' + actionTarget);
+	
+	if (actionTarget) {
+		plugins.webnotificationsToastr.warning('Clicked the UNDO button', 'Everybody Lovees Options');
+	}
+}
+
+/**
+ * @properties={typeid:24,uuid:"03B9593A-99CF-44AC-98C2-D6F48AF4F210"}
+ */
+function testFile() {
+    var ext = '.txt';
+    var parsedName = 'test'
+    /** @type {plugins.file.JSFile}*/
+    var remoteFile = plugins.file.convertToRemoteJSFile('/' + parsedName + ext);
+    remoteFile.setBytes(utils.stringToBytes('Hello'), true)
+    //remoteFile.renameTo('/' + parsedName + '_' + application.getUUID() + ext);
+    //plugins.file.writeFile(remoteFile, utils.stringToBytes('Hello'))
+   // application.sleep(500);
+    var url = plugins.file.getUrlForRemoteFile(remoteFile);
+    application.showURL(url,'_blank')
+   // plugins.svyphonegapBrowser.openHrefTag(url);
+   
+	
+    //var parsedName = currentRec.evidencename.replace(/\.[^\/.]+$/ ,"");
+    /** @type {plugins.file.JSFile}*/
+    //var remoteFile = plugins.file.convertToRemoteJSFile('/' + currentRec.evidencename + ext);
+    //remoteFile.setBytes(currentRec.evidence, true);
+//    remoteFile.renameTo('/' + parsedName + '_' + application.getUUID() + ext);
+//    application.sleep(500);
+//    var url = plugins.file.getUrlForRemoteFile(remoteFile);
+
+    return;
+    
+    var ext = '.txt';
+    var parsedName = 'C:\\Users\\aronn\\Downloads\\test'
+    /** @type {plugins.file.JSFile}*/
+    var remoteFile = plugins.file.convertToJSFile(parsedName + ext);
+	plugins.file.writeFile(remoteFile,utils.stringToBytes('Hello'))
+	plugins.file.openFile(remoteFile)
+	return;
+    //remoteFile.renameTo('/' + parsedName + '_' + application.getUUID() + ext);
+    //plugins.file.writeFile(remoteFile, utils.stringToBytes('Hello'))
+   // application.sleep(500);
+   
+	var jsFile = plugins.file.createTempFile('test', ext);
+	plugins.file.writeFile(jsFile, utils.stringToBytes('Hello'))
+    var url = plugins.file.getUrlForRemoteFile(jsFile);
+    application.showURL(url,'_blank')
+    
 }

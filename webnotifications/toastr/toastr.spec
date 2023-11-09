@@ -173,6 +173,8 @@
 			"hideDuration": "int",
 			"positionClass": "string",
 			"closeButton": "boolean",
+			"actionButton": { "type": "boolean", "default": "false", "tags": { "doc": "If true will show a custom toastr with an additional action" }},
+			"actionButtonText": { "type": "string", "tags": { "doc": "Additional action" }},
 			"closeHtml": "string",
 			"newestOnTop": "boolean",
 			"showEasing": "string",

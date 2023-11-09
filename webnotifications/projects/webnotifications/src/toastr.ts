@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ServoyPublicService } from '@servoy/public';
-import { ActiveToast, IndividualConfig, ToastrService } from '@servoy/ngx-toastr'; 
+import { ActiveToast, IndividualConfig, ToastrService } from '@servoy/ngx-toastr';
+import { ServoyToast, ServoyIndividualConfig } from './servoytoastr';
+
 
 interface ToastrOptions {
 	showDuration: number;
@@ -15,6 +17,9 @@ interface ToastrOptions {
 	hideMethod: string;
 	progressBar: boolean;
 	timeOut: number;
+	toastComponent: any;
+	actionButton: boolean;
+	actionButtonText: string;
 }
 
 @Injectable()
@@ -140,6 +145,14 @@ export class ServoyToastrService {
 			this.toastr.toastrConfig.hideEasing = options.hideEasing;
 			// this.toastr.toastrConfig = options.showMethod;
 			// this.toastr.toastrConfig = options.hideMethod;
+			
+			if (options.actionButton) {
+				this.toastr.toastrConfig.toastComponent = ServoyToast;
+				this.toastr.toastrConfig.toastClass = 'action-toastr ngx-toastr'
+				
+				// TODO can set actionButtonText as global option ?
+//				if (options.actionButtonText) this.toastr.toastrConfig.actionButtonText = options.actionButtonText
+			}
 		}
 
 	}
@@ -163,13 +176,19 @@ export class ServoyToastrService {
 			infoToast.onTap.subscribe(() => {
 				this.servoyService.executeInlineScript(onClick.formname, onClick.script, [toastrId]);
 			});
+
+			infoToast.onAction.subscribe((action: any) => {
+				this.servoyService.executeInlineScript(onClick.formname, onClick.script, [toastrId, action]);
+				this.toastr.clear(infoToast.toastId);
+			});
 		}
 	}
 
 	private convertOptions(options: ToastrOptions) {
-		const config: Partial<IndividualConfig> = {
+		const config: Partial<ServoyIndividualConfig> = {
 			enableHtml: true
 		};
+		
 		if (options) {
 			if (options.closeButton) config.closeButton = options.closeButton;
 			if (options.showEasing) config.easing = options.showEasing;
@@ -178,7 +197,17 @@ export class ServoyToastrService {
 			if (options.progressBar) config.progressBar = options.progressBar;
 			if (options.positionClass) config.positionClass = options.positionClass;
 			if (options.showDuration) config.easeTime = options.showDuration;
+			
+			// if action button is true, show the customServoy template
+			if (options.actionButton) {
+				config.toastComponent = ServoyToast;
+				config.toastClass = 'svy-action-toastr ngx-toastr'
+				
+				if (options.actionButtonText) config.actionButtonText = options.actionButtonText
+			}
 		}
-		return config as IndividualConfig;
+
+		// config.toastComponent = ServoyToast;
+		return config as ServoyIndividualConfig;
 	}
 }
