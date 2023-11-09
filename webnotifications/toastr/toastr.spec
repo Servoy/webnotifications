@@ -174,7 +174,7 @@
 			"positionClass": "string",
 			"closeButton": "boolean",
 			"actionButton": { "type": "boolean", "default": "false", "tags": { "doc": "If true will show a custom toastr with an additional action" }},
-			"actionButtonText": { "type": "string", "tags": { "doc": "Additional action" }},
+			"actionButtonText": { "type": "string", "tags": { "doc": "When the actionButton is true, set the text to show for the action section; can be an html string" }},
 			"closeHtml": "string",
 			"newestOnTop": "boolean",
 			"showEasing": "string",
