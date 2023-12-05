@@ -20,6 +20,8 @@ interface ToastrOptions {
 	toastComponent: any;
 	actionButton: boolean;
 	actionButtonText: string;
+	extendedTimeOut: number;
+	disableTimeOut: boolean;
 }
 
 @Injectable()
@@ -138,7 +140,9 @@ export class ServoyToastrService {
 			if (options.newestOnTop) this.toastr.toastrConfig.newestOnTop = options.newestOnTop;
 			if (options.progressBar) this.toastr.toastrConfig.progressBar = options.progressBar;
 			if (options.positionClass) this.toastr.toastrConfig.positionClass = options.positionClass;
-			if (options.showDuration) this.toastr.toastrConfig.easeTime = options.showDuration;
+			if (options.showDuration >= 0) this.toastr.toastrConfig.easeTime = options.showDuration;
+			if (options.extendedTimeOut >= 0) this.toastr.toastrConfig.extendedTimeOut = options.extendedTimeOut;
+			if (options.disableTimeOut) this.toastr.toastrConfig.disableTimeOut = options.disableTimeOut;
 			
 			this.toastr.toastrConfig.hideEaseTime = options.hideDuration;
 			this.toastr.toastrConfig.closeHtml = options.closeHtml;
@@ -196,7 +200,9 @@ export class ServoyToastrService {
 			if (options.newestOnTop) config.newestOnTop = options.newestOnTop;
 			if (options.progressBar) config.progressBar = options.progressBar;
 			if (options.positionClass) config.positionClass = options.positionClass;
-			if (options.showDuration) config.easeTime = options.showDuration;
+			if (options.showDuration >= 0) config.easeTime = options.showDuration;
+			if (options.extendedTimeOut >= 0) config.extendedTimeOut = options.extendedTimeOut;
+			if (options.disableTimeOut) config.disableTimeOut = options.disableTimeOut;
 			
 			// if action button is true, show the customServoy template
 			if (options.actionButton) {
