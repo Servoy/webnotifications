@@ -182,7 +182,16 @@
 			"showMethod": { "type": "string", "deprecated": "old jquery option for ng1 implementation" },
 			"hideMethod": { "type": "string", "deprecated": "old jquery option for ng1 implementation" },
 			"progressBar": "boolean",
-			"timeOut": "int"
+			"timeOut": "int",
+			"extendedTimeOut": "int",
+			"disableTimeOut": "boolean",
+			"enableHtml": "boolean",
+			"progressAnimation": "string",
+			"toastClass": "string",
+			"titleClass": "string",
+			"messageClass": "string",
+			"tapToDismiss": "boolean",
+			"onActivateTick": "boolean"
 		}
 	}
 }

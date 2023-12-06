@@ -22,6 +22,13 @@ interface ToastrOptions {
 	actionButtonText: string;
 	extendedTimeOut: number;
 	disableTimeOut: boolean;
+	enableHtml: boolean;
+	progressAnimation: string;
+	toastClass: string;
+	titleClass: string;
+	messageClass: string;
+	tapToDismiss: boolean;
+	onActivateTick: boolean;
 }
 
 @Injectable()
@@ -134,31 +141,29 @@ export class ServoyToastrService {
 
 	public setGlobalOptions(options: ToastrOptions) {
 		if (options) {
-			if (options.closeButton) this.toastr.toastrConfig.closeButton = options.closeButton;
-			if (options.showEasing) this.toastr.toastrConfig.easing = options.showEasing;
-			if (options.timeOut >= 0) this.toastr.toastrConfig.timeOut = options.timeOut;
-			if (options.newestOnTop) this.toastr.toastrConfig.newestOnTop = options.newestOnTop;
-			if (options.progressBar) this.toastr.toastrConfig.progressBar = options.progressBar;
-			if (options.positionClass) this.toastr.toastrConfig.positionClass = options.positionClass;
-			if (options.showDuration >= 0) this.toastr.toastrConfig.easeTime = options.showDuration;
-			if (options.extendedTimeOut >= 0) this.toastr.toastrConfig.extendedTimeOut = options.extendedTimeOut;
-			if (options.disableTimeOut) this.toastr.toastrConfig.disableTimeOut = options.disableTimeOut;
-			
-			this.toastr.toastrConfig.hideEaseTime = options.hideDuration;
-			this.toastr.toastrConfig.closeHtml = options.closeHtml;
-			this.toastr.toastrConfig.hideEasing = options.hideEasing;
-			// this.toastr.toastrConfig = options.showMethod;
-			// this.toastr.toastrConfig = options.hideMethod;
-			
-			if (options.actionButton) {
-				this.toastr.toastrConfig.toastComponent = ServoyToast;
-				this.toastr.toastrConfig.toastClass = 'action-toastr ngx-toastr'
-				
-				// TODO can set actionButtonText as global option ?
-//				if (options.actionButtonText) this.toastr.toastrConfig.actionButtonText = options.actionButtonText
+			for(const option in options) {
+				if (option === 'showEasing') {
+					this.toastr.toastrConfig.easing = options.showEasing;
+				}
+				else if (option === 'showDuration') {
+					this.toastr.toastrConfig.easeTime = options.showDuration;
+				}
+				else if (option === 'hideDuration') {
+					this.toastr.toastrConfig.hideEaseTime = options.hideDuration;
+				}
+				else if (option === 'actionButton' && options.actionButton) {
+					this.toastr.toastrConfig.toastComponent = ServoyToast;
+					this.toastr.toastrConfig.toastClass = 'svy-action-toastr ngx-toastr';
+				}
+				else {
+					this.toastr.toastrConfig[option] = options[option];
+				}
+			}
+
+			if (this.toastr.toastrConfig.enableHtml === null || this.toastr.toastrConfig.enableHtml === undefined) {
+				this.toastr.toastrConfig.enableHtml = true;
 			}
 		}
-
 	}
 
 	public createToastrOptions() {
@@ -189,31 +194,33 @@ export class ServoyToastrService {
 	}
 
 	private convertOptions(options: ToastrOptions) {
-		const config: Partial<ServoyIndividualConfig> = {
-			enableHtml: true
-		};
+		const config: Partial<IndividualConfig> = {};
 		
 		if (options) {
-			if (options.closeButton) config.closeButton = options.closeButton;
-			if (options.showEasing) config.easing = options.showEasing;
-			if (options.timeOut >= 0) config.timeOut = options.timeOut;
-			if (options.newestOnTop) config.newestOnTop = options.newestOnTop;
-			if (options.progressBar) config.progressBar = options.progressBar;
-			if (options.positionClass) config.positionClass = options.positionClass;
-			if (options.showDuration >= 0) config.easeTime = options.showDuration;
-			if (options.extendedTimeOut >= 0) config.extendedTimeOut = options.extendedTimeOut;
-			if (options.disableTimeOut) config.disableTimeOut = options.disableTimeOut;
+			for(const option in options) {
+				if (option === 'showEasing') {
+					config.easing = options.showEasing;
+				}
+				else if (option === 'showDuration') {
+					config.easeTime = options.showDuration;
+				}
+				else if (option === 'hideDuration') {
+					config.hideEaseTime = options.hideDuration;
+				}
+				else if (option === 'actionButton' && options.actionButton) {
+					config.toastComponent = ServoyToast;
+					config.toastClass = 'svy-action-toastr ngx-toastr';
+				}
+				else {
+					config[option] = options[option];
+				}
+			}
 			
-			// if action button is true, show the customServoy template
-			if (options.actionButton) {
-				config.toastComponent = ServoyToast;
-				config.toastClass = 'svy-action-toastr ngx-toastr'
-				
-				if (options.actionButtonText) config.actionButtonText = options.actionButtonText
+			if (config.enableHtml === null || config.enableHtml === undefined) {
+				config.enableHtml = true;
 			}
 		}
 
-		// config.toastComponent = ServoyToast;
 		return config as ServoyIndividualConfig;
 	}
 }
