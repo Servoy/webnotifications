@@ -140,30 +140,7 @@ export class ServoyToastrService {
 	}
 
 	public setGlobalOptions(options: ToastrOptions) {
-		if (options) {
-			for(const option in options) {
-				if (option === 'showEasing') {
-					this.toastr.toastrConfig.easing = options.showEasing;
-				}
-				else if (option === 'showDuration') {
-					this.toastr.toastrConfig.easeTime = options.showDuration;
-				}
-				else if (option === 'hideDuration') {
-					this.toastr.toastrConfig.hideEaseTime = options.hideDuration;
-				}
-				else if (option === 'actionButton' && options.actionButton) {
-					this.toastr.toastrConfig.toastComponent = ServoyToast;
-					this.toastr.toastrConfig.toastClass = 'svy-action-toastr ngx-toastr';
-				}
-				else {
-					this.toastr.toastrConfig[option] = options[option];
-				}
-			}
-
-			if (this.toastr.toastrConfig.enableHtml === null || this.toastr.toastrConfig.enableHtml === undefined) {
-				this.toastr.toastrConfig.enableHtml = true;
-			}
-		}
+		this.updateConfig(options, this.toastr.toastrConfig);
 	}
 
 	public createToastrOptions() {
@@ -196,6 +173,12 @@ export class ServoyToastrService {
 	private convertOptions(options: ToastrOptions) {
 		const config: Partial<IndividualConfig> = {};
 		
+		this.updateConfig(options, config);
+
+		return config as ServoyIndividualConfig;
+	}
+	
+	private updateConfig(options: ToastrOptions, config: Partial<IndividualConfig>) {
 		if (options) {
 			for(const option in options) {
 				if (option === 'showEasing') {
@@ -216,11 +199,9 @@ export class ServoyToastrService {
 				}
 			}
 			
-			if (config.enableHtml === null || config.enableHtml === undefined) {
+			if (options.enableHtml === null || options.enableHtml === undefined) {
 				config.enableHtml = true;
 			}
 		}
-
-		return config as ServoyIndividualConfig;
 	}
 }
