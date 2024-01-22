@@ -3,7 +3,7 @@
     "displayName":"Web Notifications",
     "packageType": "Web-Service",
     "icon": "https://raw.githubusercontent.com/Servoy/webnotifications/master/webnotifications/servoy.png",
-    "description": "This is the package contains services for the display of notifications messages",
+    "description": "This package contains services for displaying toast or native browser notifications messages.",
     "wikiUrl": "https://github.com/Servoy/webnotifications/wiki",
     "sourceUrl" : "https://github.com/Servoy/webnotifications",
     "releases" : [
