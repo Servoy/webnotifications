@@ -1,6 +1,6 @@
 {
 	"name": "webnotificationsToastr",
-	"displayName": "Toastr notifications",
+	"displayName": "Toastr Notifications",
 	"version": 1,
  	"definition": "webnotifications/toastr/toastr.js",
  	"doc": "webnotifications/toastr/toastr_doc.js",
