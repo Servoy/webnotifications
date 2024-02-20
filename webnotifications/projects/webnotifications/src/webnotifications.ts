@@ -22,12 +22,12 @@ export class WebNotificationsService {
 
         const permission = Notification.permission;
         if (permission === 'granted' || permission === 'denied') {
-            this.servoyService.executeInlineScript(callbackMethod.formname, callbackMethod.script, [permission ===  'granted']);
+            callbackMethod(permission ===  'granted');
             return;
         }
 
         Notification.requestPermission((status: string) => {
-            this.servoyService.executeInlineScript(callbackMethod.formname, callbackMethod.script, [status ===  'granted']);
+            callbackMethod(status ===  'granted');
         });
     }
 
@@ -79,7 +79,7 @@ export class WebNotificationsService {
 
         if (onClickCallbackMethod) {
             notification.onclick = () => {
-                this.servoyService.executeInlineScript(onClickCallbackMethod.formname, onClickCallbackMethod.script, [tag]);
+                onClickCallbackMethod(tag);
             };
         }
         return tag;

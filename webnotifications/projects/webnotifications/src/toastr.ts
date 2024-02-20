@@ -160,11 +160,11 @@ export class ServoyToastrService {
 		if (onClick) {
 			
 			infoToast.onTap.subscribe(() => {
-				this.servoyService.executeInlineScript(onClick.formname, onClick.script, [toastrId]);
+				onClick(toastrId);
 			});
 
 			infoToast.onAction.subscribe((action: any) => {
-				this.servoyService.executeInlineScript(onClick.formname, onClick.script, [toastrId, action]);
+				onClick(toastrId, action);
 				this.toastr.clear(infoToast.toastId);
 			});
 		}
