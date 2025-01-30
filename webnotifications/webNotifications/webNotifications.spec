@@ -57,7 +57,7 @@
 
 				{
 					"name": "icon",
-					"type": "media",
+					"type": "string",
 					"optional": true
 				},
 
