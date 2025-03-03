@@ -1,6 +1,3 @@
-var globalOptions;
-
-
 /**
  * Shows an info toastr with the given message, optional title and options
  * @param {String} message the message to show
