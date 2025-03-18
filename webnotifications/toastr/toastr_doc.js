@@ -97,3 +97,63 @@ function createToastrOptions() {
 */
 function setGlobalOptions(options) {
 }
+
+
+var svy_types = {
+
+    toastrOptions: {
+
+        showDuration : null,
+
+        hideDuration : null,
+
+        positionClass : null,
+
+        closeButton : null,
+
+        /**
+         * If true will show a custom toastr with an additional action
+         */
+        actionButton : null,
+
+        /**
+         * When the actionButton is true, set the text to show for the action section; can be an html string
+         */
+        actionButtonText : null,
+
+        closeHtml : null,
+
+        newestOnTop : null,
+
+        showEasing : null,
+
+        hideEasing : null,
+
+        showMethod : null,
+
+        hideMethod : null,
+
+        progressBar : null,
+
+        timeOut : null,
+
+        extendedTimeOut : null,
+
+        disableTimeOut : null,
+
+        enableHtml : null,
+
+        progressAnimation : null,
+
+        toastClass : null,
+
+        titleClass : null,
+
+        messageClass : null,
+
+        tapToDismiss : null,
+
+        onActivateTick : null,
+
+    }
+}
