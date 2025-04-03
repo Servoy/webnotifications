@@ -101,15 +101,26 @@ function setGlobalOptions(options) {
 
 var svy_types = {
 
+    /**
+     * Options to configure the appearance and behavior of toastr notifications.
+     */
     toastrOptions: {
-
-        showDuration : null,
-
-        hideDuration : null,
-
-        positionClass : null,
-
-        closeButton : null,
+        /**
+         * The duration in milliseconds for the show animation.
+         */
+        showDuration: null,
+        /**
+         * The duration in milliseconds for the hide animation.
+         */
+        hideDuration: null,
+        /**
+         * CSS class that determines the position of the toast notification.
+         */
+        positionClass: null,
+        /**
+         * If true, a close button is displayed on the toast.
+         */
+        closeButton: null,
 
         /**
          * If true will show a custom toastr with an additional action
@@ -121,39 +132,73 @@ var svy_types = {
          */
         actionButtonText : null,
 
-        closeHtml : null,
-
-        newestOnTop : null,
-
-        showEasing : null,
-
-        hideEasing : null,
-
-        showMethod : null,
-
-        hideMethod : null,
-
-        progressBar : null,
-
-        timeOut : null,
-
-        extendedTimeOut : null,
-
-        disableTimeOut : null,
-
-        enableHtml : null,
-
-        progressAnimation : null,
-
-        toastClass : null,
-
-        titleClass : null,
-
-        messageClass : null,
-
-        tapToDismiss : null,
-
-        onActivateTick : null,
-
+        /**
+         * The HTML for the close button.
+         */
+        closeHtml: null,
+        /**
+         * If true, newer toasts appear on top of older ones.
+         */
+        newestOnTop: null,
+        /**
+         * The easing function to use when showing the toast.
+         */
+        showEasing: null,
+        /**
+         * The easing function to use when hiding the toast.
+         */
+        hideEasing: null,
+        /**
+         * The method used to show the toast (deprecated for old jQuery implementations).
+         */
+        showMethod: null,
+        /**
+         * The method used to hide the toast (deprecated for old jQuery implementations).
+         */
+        hideMethod: null,
+        /**
+         * If true, displays a progress bar within the toast.
+         */
+        progressBar: null,
+        /**
+         * The time in milliseconds before the toast auto-hides.
+         */
+        timeOut: null,
+        /**
+         * The time in milliseconds for extended timeout on hover.
+         */
+        extendedTimeOut: null,
+        /**
+         * If true, disables the auto-hide timeout.
+         */
+        disableTimeOut: null,
+        /**
+         * If true, allows HTML content in the toast message.
+         */
+        enableHtml: null,
+        /**
+         * The type of animation used for the progress bar.
+         */
+        progressAnimation: null,
+        /**
+         * CSS class applied to the toast container.
+         */
+        toastClass: null,
+        /**
+         * CSS class applied to the toast title.
+         */
+        titleClass: null,
+        /**
+         * CSS class applied to the toast message.
+         */
+        messageClass: null,
+        /**
+         * If true, clicking on the toast will dismiss it.
+         */
+        tapToDismiss: null,
+        /**
+         * If true, activates a tick animation when the toast is activated.
+         */
+        onActivateTick: null
     }
 }
