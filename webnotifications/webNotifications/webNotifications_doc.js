@@ -1,3 +1,8 @@
+/*
+ * A service for showing notifications via the notification API offered by the browser.<br/>
+ * If you want customized toastr messages (based on the toastr library), use the Toastr Notifications service instead.
+ */
+
 /**
  * Returns whether or not the Web Notification functionality is supported
  *

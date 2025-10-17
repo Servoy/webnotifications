@@ -1,3 +1,8 @@
+/*
+ * A service for showing customized toastr messages (based on the toastr library) inside the browser.
+ * If you want to use the notification API offered by the browser directly, use the Native Web Notifications service instead.
+ */
+
 /**
  * Shows an info toastr with the given message, optional title and options
  * @param {String} message the message to show
