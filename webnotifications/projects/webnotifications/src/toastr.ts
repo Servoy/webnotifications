@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ServoyPublicService } from '@servoy/public';
-import { ActiveToast, IndividualConfig, ToastrService } from '@servoy/ngx-toastr';
+import { ActiveToast, IndividualConfig, Toast, ToastrService } from '@servoy/ngx-toastr';
 import { ServoyToast, ServoyIndividualConfig } from './servoytoastr';
 
+type OnClickCallback = (toastrId: string, action?: string) => void;
 
 interface ToastrOptions {
 	showDuration: number;
@@ -17,7 +18,7 @@ interface ToastrOptions {
 	hideMethod: string;
 	progressBar: boolean;
 	timeOut: number;
-	toastComponent: any;
+	toastComponent: typeof Toast;
 	actionButton: boolean;
 	actionButtonText: string;
 	extendedTimeOut: number;
@@ -35,9 +36,10 @@ interface ToastrOptions {
 export class ServoyToastrService {
 
     toastrsCreated = 1;
-	toastrsIDs: Array<[number, any]> = [];
+	toastrsIDs: Array<[number, string]> = [];
 
-    constructor(private toastr: ToastrService, private servoyService: ServoyPublicService) {}
+	private readonly toastr = inject(ToastrService);
+	private readonly servoyService = inject(ServoyPublicService);
 
 	/**
 	 * Shows an info toastr with the given message, optional title and options
@@ -56,7 +58,7 @@ export class ServoyToastrService {
 	 * }
 	 * </pre>
 	 */
-	public info(message: string, title: string, options: ToastrOptions, toastrId: any, onClick: any) {
+	public info(message: string, title: string, options: ToastrOptions, toastrId: string, onClick: OnClickCallback) {
 		const infoToast = this.toastr.info(message, title, this.convertOptions(options));
 		this.commonActions(infoToast, toastrId, onClick);
 	}
@@ -78,7 +80,7 @@ export class ServoyToastrService {
 	 * }
 	 * </pre>
 	 */
-	public warning(message: string, title: string, options: ToastrOptions, toastrId: any, onClick: any) {
+	public warning(message: string, title: string, options: ToastrOptions, toastrId: string, onClick: OnClickCallback) {
 		const infoToast = this.toastr.warning(message, title, this.convertOptions(options));
 		this.commonActions(infoToast, toastrId, onClick);
 	}
@@ -100,7 +102,7 @@ export class ServoyToastrService {
 	 * }
 	 * </pre>
 	 */
-	public error(message: string, title: string, options: ToastrOptions, toastrId: any, onClick: any) {
+	public error(message: string, title: string, options: ToastrOptions, toastrId: string, onClick: OnClickCallback) {
 		const infoToast = this.toastr.error(message, title, this.convertOptions(options));
 		this.commonActions(infoToast, toastrId, onClick);
 	}
@@ -122,7 +124,7 @@ export class ServoyToastrService {
 	 * }
 	 * </pre>
 	 */
-	public success(message: string, title: string, options: ToastrOptions, toastrId: any, onClick: Function) {
+	public success(message: string, title: string, options: ToastrOptions, toastrId: string, onClick: OnClickCallback) {
 		const infoToast = this.toastr.success(message, title, this.convertOptions(options));
 		this.commonActions(infoToast, toastrId, onClick);
 	}
@@ -132,7 +134,7 @@ export class ServoyToastrService {
 		this.toastr.clear();
 	}
 
-	public clearToastr(toastrId: any) {
+	public clearToastr(toastrId: string) {
 		const toastrToClear = this.toastrsIDs.find(t => t[1] === toastrId);
 		if (toastrToClear) {
 			this.toastr.clear(toastrToClear[0]);
@@ -147,7 +149,8 @@ export class ServoyToastrService {
 		return {};
 	}
 
-	private commonActions(infoToast: ActiveToast<any>, toastrId: any,onClick: any) {
+	private commonActions(infoToast: ActiveToast<unknown> | null, toastrId: string, onClick: OnClickCallback) {
+		if (!infoToast) return;
 		toastrId = toastrId || ('toastr_' + (this.toastrsCreated++));
 		this.toastrsIDs.push([infoToast.toastId, toastrId]);
 		this.toastr.toasts.push(infoToast);
@@ -158,13 +161,12 @@ export class ServoyToastrService {
 		});
 
 		if (onClick) {
-			
 			infoToast.onTap.subscribe(() => {
 				onClick(toastrId);
 			});
 
-			infoToast.onAction.subscribe((action: any) => {
-				onClick(toastrId, action);
+			infoToast.onAction.subscribe((action: unknown) => {
+				onClick(toastrId, action as string);
 				this.toastr.clear(infoToast.toastId);
 			});
 		}
@@ -180,22 +182,18 @@ export class ServoyToastrService {
 	
 	private updateConfig(options: ToastrOptions, config: Partial<IndividualConfig>) {
 		if (options) {
-			for(const option in options) {
+			for (const option in options) {
 				if (option === 'showEasing') {
 					config.easing = options.showEasing;
-				}
-				else if (option === 'showDuration') {
+				} else if (option === 'showDuration') {
 					config.easeTime = options.showDuration;
-				}
-				else if (option === 'hideDuration') {
+				} else if (option === 'hideDuration') {
 					config.hideEaseTime = options.hideDuration;
-				}
-				else if (option === 'actionButton' && options.actionButton) {
+				} else if (option === 'actionButton' && options.actionButton) {
 					config.toastComponent = ServoyToast;
 					config.toastClass = 'svy-action-toastr ngx-toastr';
-				}
-				else {
-					config[option] = options[option];
+				} else {
+					(config as Record<string, unknown>)[option] = (options as unknown as Record<string, unknown>)[option];
 				}
 			}
 			

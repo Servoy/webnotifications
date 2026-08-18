@@ -1,10 +1,11 @@
 import { ServoyPublicService, WindowRefService } from '@servoy/public';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 @Injectable()
 export class WebNotificationsService {
 
-    constructor(private servoyService: ServoyPublicService, private windowRef: WindowRefService) {}
+    private readonly servoyService = inject(ServoyPublicService);
+    private readonly windowRef = inject(WindowRefService);
 
     public isSupported() {
         return 'Notification' in this.windowRef.nativeWindow;
@@ -15,7 +16,7 @@ export class WebNotificationsService {
      *
      * @param callbackMethod
      */
-    public requestPermission(callbackMethod: any) {
+    public requestPermission(callbackMethod: (granted: boolean) => void) {
         if (!this.isSupported()) {
             throw new Error('Web Notification functionality is not supported by the browser!');
         }
@@ -65,15 +66,15 @@ export class WebNotificationsService {
      *
      * @return value of the tag (as supplied or generated)
      */
-    public show(title: string, body: string, icon: string, image: string, tag: string, onClickCallbackMethod: any) {
+    public show(title: string, body: string, icon: string, image: string, tag: string, onClickCallbackMethod: (tag: string) => void) {
         if (!this.isSupported()) {
             throw new Error('Web Notification functionality is not supported by the browser!');
         }
         tag = tag || Date.now().toString();
 
-        const options = {body, tag};
-        if (icon) options['icon'] = icon;
-        if (image) options['image'] = image;
+        const options: NotificationOptions & { image?: string } = {body, tag};
+        if (icon) options.icon = icon;
+        if (image) options.image = image;
 
         const notification = new Notification(title, options);
 

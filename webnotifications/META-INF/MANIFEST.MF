@@ -4,6 +4,7 @@ Bundle-Name: Web Notifications
 Bundle-Version: 2024.3.0
 Package-Type: Web-Service
 NPM-PackageName: @servoy/webnotifications
+Entry-Point: projects/webnotifications
 
 Name: webNotifications/webNotifications.spec
 Web-Service: True
